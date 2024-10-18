@@ -1,0 +1,17 @@
+# devops-runner-sa.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: devops
+  labels:
+    name: devops
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    azure.workload.identity/client-id: 57dcc5e6-1463-4e7d-b306-eec4e9b3a3cb # echo $workloadClientId
+  labels:
+    azure.workload.identity/use: "true"
+  name: workload-sa
+  namespace: devops
