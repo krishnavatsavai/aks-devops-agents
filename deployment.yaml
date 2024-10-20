@@ -22,7 +22,7 @@ spec:
           - name: AZP_URL
             value: https://krishna-vatsavai.visualstudio.com/
           - name: AZP_TOKEN
-            value: pwf6sawc3vuuv5s74ijsctwpotld5v5ismbnz7howylfhrphoxaq
+            value: <>
           - name: AZP_POOL
             value: krishna-aks
         volumeMounts:
