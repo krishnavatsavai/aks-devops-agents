@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-linux
+  namespace: az-devops
+  labels:
+    app: aks-linux-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-linux-agent
+  template:
+    metadata:
+      labels:
+        app: aks-linux-agent
+    spec:
+      containers:
+      - name: kubepodcreation
+        image: krishnacr.azurecr.io/adoagent-linux:v1
+        env:
+          - name: AZP_URL
+            value: https://krishna-vatsavai.visualstudio.com/
+          - name: AZP_TOKEN
+            value: pwf6sawc3vuuv5s74ijsctwpotld5v5ismbnz7howylfhrphoxaq
+          - name: AZP_POOL
+            value: krishna-aks
+        volumeMounts:
+        - mountPath: /var/run/docker.sock
+          name: docker-volume
+      volumes:
+      - name: docker-volume
+        hostPath:
+          path: /var/run/docker.sock
